@@ -26,9 +26,14 @@ var db *sql.DB
 var err error
 
 func createTask(w http.ResponseWriter, r *http.Request) {
-	// w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	// w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
-	// w.Header().Set("Access-Control-Allow-Headers", "content-type")
+	//w.Header().Set("Access-Control-Allow-Headers", "content-type")
+	if (*r).Method == "OPTIONS" {
+	    w.Header().Set("Access-Control-Allow-Headers", "content-type")
+	    w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
+	    return
+	}
 
 	stmt, err := db.Prepare("INSERT INTO tasks (description, status) VALUES(?, ?)")
 	if err != nil {
@@ -110,6 +115,7 @@ func deleteTask(w http.ResponseWriter, r *http.Request) {
 }
 
 func getTasks(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
 	var tasks []Task
 	var thelist TaskList

@@ -11,7 +11,7 @@ export default class TaskList extends React.Component {
     }
   
     componentDidMount() {
-      fetch("/tasks")
+      fetch("http://test.khanhquocnguyen.com:8080/tasks")
         .then(res => res.json())
         .then(
           (result) => {

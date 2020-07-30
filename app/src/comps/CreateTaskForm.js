@@ -3,8 +3,8 @@ import React from 'react';
 export default class CreateTaskForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {description: '',
-                    status: ''};
+        this.state = {description: 'Default task',
+                    status: 'todo'};
     
         this.handleChangeText = this.handleChangeText.bind(this);
         this.handleChangeDropdown = this.handleChangeDropdown.bind(this);
@@ -20,17 +20,15 @@ export default class CreateTaskForm extends React.Component {
       }
     
       handleSubmit() {
-        alert('A task added: ' + this.state.description);
-        fetch("http://localhost:8080/tasks", {
+	console.log(this.state);
+        //alert('A task added: ' + this.state.status);
+        fetch("http://test.khanhquocnguyen.com:8080/tasks", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-            "description" : "Khanh",
-            "status" : "doing"
-        })})
-        .then(response => response.json())
+            body: JSON.stringify(this.state)})
+        //.then(response => response.json())
         .then(data => {
           console.log('Success:', data);
         })
