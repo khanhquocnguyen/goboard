@@ -134,7 +134,7 @@ func getTasks(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	db, err = sql.Open("mysql", "root:khanhdatabase@tcp(127.0.0.1:3306)/goboard")
+	db, err = sql.Open("mysql", "khanh:khanhdatabase@tcp(127.0.0.1:3306)/goboard")
 	if err != nil {
 		panic(err.Error())
 	}
