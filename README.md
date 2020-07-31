@@ -1,5 +1,9 @@
 # Goboard
 
+### Simple React Frontend
+
+    http://test.khanhquocnguyen.com:3000
+
 ### Backend API Endpoint:
 
 **Get all task**
@@ -35,9 +39,3 @@ Request body:
 **Delete a task:**
 
     DELETE: http://test.khanhquocnguyen.com:8080/tasks/{id}
-
-
-### Simple React Frontend
-
-    http://test.khanhquocnguyen.com:3000
-
